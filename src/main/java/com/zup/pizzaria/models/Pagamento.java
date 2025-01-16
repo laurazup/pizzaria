@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Pagamento {
@@ -16,9 +16,20 @@ public class Pagamento {
     private String formaPagamento;
     private Double valorPago;
     private Double troco;
-    private Date dataHoraPagamento;
+    private LocalDateTime dataHoraPagamento;
 
-    public Pagamento(Long pedidoId) {
+    public Pagamento(Long pedidoId, String formaPagamento, Double valorPago) {
         this.pedidoId = pedidoId;
+        this.formaPagamento = formaPagamento;
+        this.valorPago = valorPago;
+        dataHoraPagamento = LocalDateTime.now();
+    }
+
+    public Double getTroco() {
+        return troco;
+    }
+
+    public void setTroco(Double troco) {
+        this.troco = troco;
     }
 }
