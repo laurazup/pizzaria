@@ -3,7 +3,9 @@ package com.zup.pizzaria.services;
 import com.zup.pizzaria.models.PagamentoModel;
 import com.zup.pizzaria.models.Pedido;
 import com.zup.pizzaria.repository.PedidoRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PagamentoService {
 
     private final PedidoRepository pedidoRepository;
