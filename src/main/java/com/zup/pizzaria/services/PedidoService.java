@@ -13,18 +13,23 @@ public class PedidoService {
     private final ClienteRepository clienteRepository;
 
     public PedidoService(PedidoRepository pedidoRepository, ClienteRepository clienteRepository) {
+
         this.pedidoRepository = pedidoRepository;
         this.clienteRepository = clienteRepository;
     }
 
     public PedidoDTO criarPedido(Pedido pedido) {
-        // Salva pedido
-        pedidoRepository.save(pedido);
 
         // Obtenho cliente
         Cliente cliente = clienteRepository
                 .findById(pedido.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+
+        // Salva cliente
+        clienteRepository.save(cliente);
+
+        // Salva pedido
+        pedidoRepository.save(pedido);
 
         return new PedidoDTO(cliente.getNome(), cliente.getEmail(), pedido.getDescricao());
     }
