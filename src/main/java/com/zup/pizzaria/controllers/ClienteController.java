@@ -25,11 +25,9 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<?> criarCliente(@Valid @RequestBody Cliente cliente) {
         try {
-            // Chama o serviço para salvar o cliente
             ClienteDTO clienteDto = clienteService.criarCliente(cliente);
             return ResponseEntity.status(HttpStatus.CREATED).body(clienteDto);
-        } catch (Exception e /*ClienteJaExisteException e*/) {
-            // Retorna erro 400 com a mensagem da exceção
+        } catch (IllegalStateException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("erro", e.getMessage()));
         }
     }

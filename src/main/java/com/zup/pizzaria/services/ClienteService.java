@@ -13,7 +13,6 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-    // ClienteRequisicaoDTO ClienteRespostaDTO
     public ClienteDTO criarCliente(Cliente cliente) {
         if (clienteRepository.existsByNome(cliente.getNome()) &&
                 clienteRepository.existsByEmail(cliente.getEmail())
@@ -21,7 +20,11 @@ public class ClienteService {
             throw new IllegalStateException("A combinação de nome e email já existe!");
         }
         clienteRepository.save(cliente);
-        return new ClienteDTO(cliente);
+        return new ClienteDTO(
+                cliente.getId(),
+                cliente.getNome(),
+                cliente.getEmail()
+        );
 
     }
 }
