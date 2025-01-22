@@ -1,7 +1,11 @@
 package com.zup.pizzaria.models;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDateTime;
 
 
@@ -11,27 +15,31 @@ public class PagamentoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = "O ID do pedido é obrigatorio")
     private Long pedidoId;
 
-    private String formaPagamento;
+    @Enumerated(EnumType.STRING)
+    @NotBlank(message = " A forma de pagamento é obrigatorio")
+    private FormaPagamento formaPagamento;
 
+    @NotNull(message = "O valor pago é obrigatorio")
+    @Min(value = 0, message = "O valor pago não pode ser menor que zero.")
     private Double valorPago;
 
+    @NotNull(message = "A data e hora do pagamento são obrigatorias")
     private LocalDateTime dataHoraPagamento;
 
-    // Construtor padrão
+
     public PagamentoModel() {
     }
 
-    // Construtor com parâmetros
-    public PagamentoModel(Long pedidoId, String formaPagamento, Double valorPago, LocalDateTime dataHoraPagamento) {
+    public PagamentoModel(Long pedidoId, String FormaPagamento, Double valorPago, LocalDateTime dataHoraPagamento) {
         this.pedidoId = pedidoId;
         this.formaPagamento = formaPagamento;
         this.valorPago = valorPago;
         this.dataHoraPagamento = dataHoraPagamento;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -48,11 +56,11 @@ public class PagamentoModel {
         this.pedidoId = pedidoId;
     }
 
-    public String getFormaPagamento() {
+    public FormaPagamento getFormaPagamento() {
         return formaPagamento;
     }
 
-    public void setFormaPagamento(String formaPagamento) {
+    public void setFormaPagamento( FormaPagamento formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 
@@ -71,4 +79,6 @@ public class PagamentoModel {
     public void setDataHoraPagamento(LocalDateTime dataHoraPagamento) {
         this.dataHoraPagamento = dataHoraPagamento;
     }
+
+
 }
