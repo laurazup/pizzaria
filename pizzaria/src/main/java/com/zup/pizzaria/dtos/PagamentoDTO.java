@@ -1,29 +1,56 @@
+
 package com.zup.pizzaria.dtos;
 
 import java.time.LocalDateTime;
 
-import com.zup.pizzaria.dtos.PedidoDTO;
-
 public class PagamentoDTO {
-    private long id;
-    private long pedidoId;
-    private String formaPagamento;
-    private double valorPago;
+    private long idPagamento;
+    private long pedidoidPagamento;
+    private String formaPagamentoPagamento;
+    private double valorPagoPagamento;
     private int escolha;
-    LocalDateTime dataHoraPagamento;
-    private double totadopedido;
+    LocalDateTime dataHoraPagamento; // Data e hora do pagamento
 
-    public PagamentoDTO(LocalDateTime dataHoraPagamento, int escolha, String formaPagamento, long id, long pedidoId, double valorPago, double totadopedido) {
-        this.dataHoraPagamento = dataHoraPagamento;
-        this.escolha = escolha;
-        this.formaPagamento = formaPagamento;
-        this.id = id;
-        this.pedidoId = pedidoId;
-        this.valorPago = valorPago;
-        this.totadopedido = totadopedido;
+
+    public PagamentoDTO(String formaPagamentoPagamento, LocalDateTime dataHoraPagamento, long id, int escolha, double valorPago, double totaldopedidoPedido, long pedidoid) {
+        this.formaPagamentoPagamento = formaPagamentoPagamento;
+        this.idPagamento = idPagamento;
+        this.pedidoidPagamento = pedidoidPagamento;
+        this.valorPagoPagamento = valorPagoPagamento;
+        this.escolha = this.escolha;
+        this.dataHoraPagamento = this.dataHoraPagamento;
     }
 
-    public PagamentoDTO(double totadopedido, String descricaoPedido, LocalDateTime dataHoraPagamento, long id, long pedidoId, int escolha, String formaPagamento, double valorPago) {
+    public String getFormaPagamentoPagamento() {
+        return formaPagamentoPagamento;
+    }
+
+    public void setFormaPagamentoPagamento(String formaPagamentoPagamento) {
+        this.formaPagamentoPagamento = formaPagamentoPagamento;
+    }
+
+    public long getIdPagamento() {
+        return idPagamento;
+    }
+
+    public void setIdPagamento(long idPagamento) {
+        this.idPagamento = idPagamento;
+    }
+
+    public long getPedidoidPagamento() {
+        return pedidoidPagamento;
+    }
+
+    public void setPedidoidPagamento(long pedidoidPagamento) {
+        this.pedidoidPagamento = pedidoidPagamento;
+    }
+
+    public double getValorPagoPagamento() {
+        return valorPagoPagamento;
+    }
+
+    public void setValorPagoPagamento(double valorPagoPagamento) {
+        this.valorPagoPagamento = valorPagoPagamento;
     }
 
     public LocalDateTime getDataHoraPagamento() {
@@ -40,45 +67,5 @@ public class PagamentoDTO {
 
     public void setEscolha(int escolha) {
         this.escolha = escolha;
-    }
-
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getPedidoId() {
-        return pedidoId;
-    }
-
-    public void setPedidoId(long pedidoId) {
-        this.pedidoId = pedidoId;
-    }
-
-    public double getValorPago() {
-        return valorPago;
-    }
-
-    public void setValorPago(double valorPago) {
-        this.valorPago = valorPago;
-    }
-
-    public double getTotadopedido() {
-        return totadopedido;
-    }
-
-    public void setTotadopedido(double totadopedido) {
-        this.totadopedido = totadopedido;
     }
 }

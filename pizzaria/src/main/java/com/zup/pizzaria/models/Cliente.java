@@ -12,6 +12,15 @@ public class Cliente {
     private Long id;
     private String nome;
     private String email;
+    private long telefone;
+
+    public long getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(long telefone) {
+        this.telefone = telefone;
+    }
 
     public Long getId() {
         return id;
@@ -20,7 +29,6 @@ public class Cliente {
     public void setId(Long id) {
         this.id = id;
     }
-
 
     public String getNome() {
         return nome;
@@ -38,8 +46,10 @@ public class Cliente {
         this.email = email;
     }
 
-    public Cliente(String nome, String email) {
+    public Cliente() {
         this.nome = nome;
         this.email = email;
+        this.telefone = telefone;
+
     }
 }

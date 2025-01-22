@@ -4,13 +4,23 @@ public class PedidoDTO {
     private String nomeCliente;
     private String emailCliente;
     private String descricaoPedido;
-    private double totadopedido;
+    private double totaldopedidoPedido;
+    private long telefone;
 
-    public PedidoDTO(String nomeCliente, String emailCliente, String descricaoPedido,double totadopedido) {
+    public PedidoDTO(String nomeCliente, String emailCliente, String descricaoPedido, double totaldopedidoPedido, long telefone) {
         this.nomeCliente = nomeCliente;
         this.emailCliente = emailCliente;
         this.descricaoPedido = descricaoPedido;
-        this.totadopedido = totadopedido;
+        this.totaldopedidoPedido = totaldopedidoPedido;
+        this.telefone = this.telefone;
+    }
+
+    public double getTotaldopedidoPedido() {
+        return totaldopedidoPedido;
+    }
+
+    public void setTotaldopedidoPedido(double totaldopedidoPedido) {
+        this.totaldopedidoPedido = totaldopedidoPedido;
     }
 
     public String getNomeCliente() {
@@ -37,11 +47,11 @@ public class PedidoDTO {
         this.descricaoPedido = descricaoPedido;
     }
 
-    public double getTotadopedido() {
-        return totadopedido;
+    public long getTelefone() {
+        return telefone;
     }
 
-    public void setTotadopedido(double totadopedido) {
-        this.totadopedido = totadopedido;
+    public void setTelefone(long telefone) {
+        this.telefone = telefone;
     }
 }

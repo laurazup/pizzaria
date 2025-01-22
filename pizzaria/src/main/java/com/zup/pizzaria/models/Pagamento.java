@@ -6,35 +6,26 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.time.LocalDateTime;
-import java.util.Scanner;
 
 @Entity
 public class Pagamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long pedidoId;
+    private long pedidoid;
     private String formaPagamento;
     private double valorPago;
     private int escolha;
     LocalDateTime dataHoraPagamento; // Data e hora do pagamento
-//---------------------------------------------------
 
 
-    public LocalDateTime getDataHoraPagamento() {
-        return dataHoraPagamento;
-    }
-
-    public void setDataHoraPagamento(LocalDateTime dataHoraPagamento) {
-        this.dataHoraPagamento = dataHoraPagamento;
-    }
-
-    public int getEscolha() {
-        return escolha;
-    }
-
-    public void setEscolha(int escolha) {
+    public Pagamento(String formaPagamento, long id, long pedidoid, double valorPago, int escolha,LocalDateTime dataHoraPagamento) {
+        this.formaPagamento = formaPagamento;
+        this.id = id;
+        this.pedidoid = pedidoid;
+        this.valorPago = valorPago;
         this.escolha = escolha;
+        this.dataHoraPagamento = dataHoraPagamento;
     }
 
     public String getFormaPagamento() {
@@ -53,12 +44,12 @@ public class Pagamento {
         this.id = id;
     }
 
-    public long getPedidoId() {
-        return pedidoId;
+    public long getPedidoid() {
+        return pedidoid;
     }
 
-    public void setPedidoId(long pedidoId) {
-        this.pedidoId = pedidoId;
+    public void setPedidoid(long pedidoid) {
+        this.pedidoid = pedidoid;
     }
 
     public double getValorPago() {
@@ -69,12 +60,19 @@ public class Pagamento {
         this.valorPago = valorPago;
     }
 
-    public Pagamento(LocalDateTime dataHoraPagamento, int escolha, String formaPagamento, long id, long pedidoId, double valorPago) {
-        this.dataHoraPagamento = dataHoraPagamento;
+    public int getEscolha() {
+        return escolha;
+    }
+
+    public void setEscolha(int escolha) {
         this.escolha = escolha;
-        this.formaPagamento = formaPagamento;
-        this.id = id;
-        this.pedidoId = pedidoId;
-        this.valorPago = valorPago;
+    }
+
+    public LocalDateTime getDataHoraPagamento() {
+        return dataHoraPagamento;
+    }
+
+    public void setDataHoraPagamento(LocalDateTime dataHoraPagamento) {
+        this.dataHoraPagamento = dataHoraPagamento;
     }
 }

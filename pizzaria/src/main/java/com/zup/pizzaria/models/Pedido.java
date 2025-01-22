@@ -12,12 +12,20 @@ public class Pedido {
     private Long id;
     private String descricao;
     private Long clienteId;
-    private double totadopedido;
+    private double totaldopedido;
 
     public Pedido(Long clienteId, String descricao,double totaldopedido) {
         this.clienteId = clienteId;
         this.descricao = descricao;
-        this.totadopedido = totaldopedido;
+        this.totaldopedido = totaldopedido;
+    }
+
+    public double getTotaldopedido() {
+        return totaldopedido;
+    }
+
+    public void setTotaldopedido(double totaldopedido) {
+        this.totaldopedido = totaldopedido;
     }
 
     public Long getId() {
@@ -42,13 +50,5 @@ public class Pedido {
 
     public void setClienteId(Long clienteId) {
         this.clienteId = clienteId;
-    }
-
-    public double getTotadopedido() {
-        return totadopedido;
-    }
-
-    public void setTotadopedido(double totadopedido) {
-        this.totadopedido = totadopedido;
     }
 }

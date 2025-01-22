@@ -22,9 +22,6 @@ public class PedidoService {
         Cliente cliente = clienteRepository
                 .findById(pedido.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-        // Salva pedido
-        pedidoRepository.save(pedido);
-
-        return new PedidoDTO(cliente.getNome(), cliente.getEmail(), pedido.getDescricao(), pedido.getTotadopedido());
+        return new PedidoDTO(cliente.getNome(), cliente.getEmail(), pedido.getDescricao(), pedido.getTotaldopedido(), cliente.getTelefone());
     }
 }
