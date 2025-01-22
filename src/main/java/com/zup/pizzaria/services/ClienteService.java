@@ -17,7 +17,6 @@ public class ClienteService {
     }
 
     public Cliente criarCliente(Cliente cliente) {
-        // Exemplo de validação ou lógica adicional
         if (clienteRepository.existsByEmail(cliente.getEmail())) {
             throw new IllegalArgumentException("Já existe um cliente com este e-mail.");
         }
