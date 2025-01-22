@@ -1,7 +1,7 @@
 package com.zup.pizzaria.controllers;
 
 import com.zup.pizzaria.models.Cliente;
-import com.zup.pizzaria.repository.ClienteRepository;
+import com.zup.pizzaria.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/clientes")
 public class ClienteController {
 
-    private final ClienteRepository clienteRepository;
+    private final ClienteService clienteService;
 
-    public ClienteController(ClienteRepository clienteRepository) {
-        this.clienteRepository = clienteRepository;
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
     }
 
     @PostMapping
     public ResponseEntity<Cliente> criarCliente(@Valid @RequestBody Cliente cliente) {
-        Cliente clienteSalvo = clienteRepository.save(cliente);
+        Cliente clienteSalvo = clienteService.save(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
 
     }

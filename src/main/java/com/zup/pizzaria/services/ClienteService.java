@@ -2,6 +2,7 @@ package com.zup.pizzaria.services;
 
 import com.zup.pizzaria.models.Cliente;
 import com.zup.pizzaria.repository.ClienteRepository;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,7 +16,6 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
     }
 
-
     public Cliente criarCliente(Cliente cliente) {
         // Exemplo de validação ou lógica adicional
         if (clienteRepository.existsByEmail(cliente.getEmail())) {
@@ -24,12 +24,14 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    // Método para buscar um cliente por ID
+    public Cliente save(Cliente cliente) {
+        return criarCliente(cliente);
+    }
+
     public Optional<Cliente> buscarClientePorId(Long id) {
         return clienteRepository.findById(id);
     }
 
-    // Método para atualizar um cliente
     public Cliente atualizarCliente(Long id, Cliente clienteAtualizado) {
         Cliente clienteExistente = clienteRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Cliente não encontrado."));
