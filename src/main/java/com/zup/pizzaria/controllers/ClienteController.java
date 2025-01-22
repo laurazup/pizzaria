@@ -31,4 +31,10 @@ public class ClienteController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> atualizarCliente(@PathVariable Long id, @Valid @RequestBody Cliente clienteAtualizado) {
+        Cliente cliente = clienteService.atualizarCliente(id, clienteAtualizado);
+        return ResponseEntity.ok(cliente);
+    }
+
 }
