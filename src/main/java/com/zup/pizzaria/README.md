@@ -108,7 +108,7 @@ cd pizzaria
 4.Acesse o endpoint de pagamentos:
 POST /pagamentos: Registra um novo pagamento.
 
-Exemplo de Requisição
+Exemplo de Requisição:
 Endpoint: POST /pagamentos
 Corpo da Requisição (JSON):
 
@@ -125,16 +125,16 @@ Corpo da Requisição (JSON):
   "mensagem": "Pagamento realizado com sucesso!"
 }
 
-Validações Implementadas
-Valor Pago:
+Validações Implementadas.
 
+Valor Pago:
 O valor pago não pode ser menor que o valor total do pedido.
 Caso contrário, uma exceção será lançada com a mensagem: "O valor pago não pode ser menor que o valor total do pedido."
 Pedido Existente:
 
 O sistema verifica se o pedido associado ao pagamento existe no banco de dados.
 
-Estrutura do Projeto
+Estrutura do Projeto:
 
 src/
 ├── main/
@@ -157,7 +157,7 @@ src/
 ├── resources/
 │   ├── application.properties
 
-Tecnologias Utilizadas
+Tecnologias Utilizadas:
 Java 17
 Spring Boot
 H2 Database (pode ser substituído por outro banco de dados)
