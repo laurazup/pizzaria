@@ -1,7 +1,7 @@
 package com.zup.pizzaria.utils;
 
 public class ClienteUtil {
-    private static void clienteUtil(String nome, String email, String telefone) {
+    public static void clienteUtil(String nome, String email, String telefone) {
 
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("O nome não pode ser vazio ou nulo.");
