@@ -15,7 +15,7 @@ public class ClienteService {
 
 
     public Cliente criarCliente(ClienteDTO clienteDTO) throws Exception {
-        // Validações utilizando ClienteUtil
+
         ClienteUtil.clienteUtil(clienteDTO.getNomeCliente(), clienteDTO.getEmailCliente(), clienteDTO.getTelefoneCliente());
 
         if (clienteRepository.existsByEmail(clienteDTO.getEmailCliente())) {
