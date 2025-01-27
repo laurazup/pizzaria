@@ -4,7 +4,7 @@ public class ClienteDTO {
 
     private String nomeCliente;
     private String emailCliente;
-    private Long telefoneCliente;
+    private String telefoneCliente;
 
     public String getNomeCliente() {
         return nomeCliente;
@@ -22,11 +22,11 @@ public class ClienteDTO {
         this.emailCliente = emailCliente;
     }
 
-    public Long getTelefoneCliente() {
+    public String getTelefoneCliente() {
         return telefoneCliente;
     }
 
-    public void setTelefoneCliente(Long telefoneCliente) {
+    public void setTelefoneCliente(String telefoneCliente) {
         this.telefoneCliente = telefoneCliente;
     }
 }

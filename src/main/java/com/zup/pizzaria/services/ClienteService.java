@@ -3,6 +3,7 @@ package com.zup.pizzaria.services;
 import com.zup.pizzaria.dtos.ClienteDTO;
 import com.zup.pizzaria.models.Cliente;
 import com.zup.pizzaria.repository.ClienteRepository;
+import com.zup.pizzaria.utils.ClienteUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,8 @@ public class ClienteService {
 
 
     public Cliente criarCliente(ClienteDTO clienteDTO) throws Exception {
+        // Validações utilizando ClienteUtil
+        ClienteUtil.clienteUtil(clienteDTO.getNomeCliente(), clienteDTO.getEmailCliente(), clienteDTO.getTelefoneCliente());
 
         if (clienteRepository.existsByEmail(clienteDTO.getEmailCliente())) {
             throw new IllegalArgumentException("O e-mail já está cadastrado.");

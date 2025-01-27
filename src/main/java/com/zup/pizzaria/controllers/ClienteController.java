@@ -1,5 +1,6 @@
 package com.zup.pizzaria.controllers;
 
+import com.zup.pizzaria.dtos.ClienteDTO;
 import com.zup.pizzaria.models.Cliente;
 import com.zup.pizzaria.repository.ClienteRepository;
 import com.zup.pizzaria.utils.ClienteUtil;
@@ -24,16 +25,15 @@ public class ClienteController {
     public  ClienteController(ClienteRepository clienteRepository){}
 
     @PostMapping
-    public ResponseEntity<?> criarCliente(@Validated @RequestBody Cliente cliente) {
+    public ResponseEntity<?> criarCliente(@Validated @RequestBody ClienteDTO clienteDTO) {
 
-        try {
-            ClienteUtil.clienteUtil(cliente.getNome(), cliente.getEmail(), cliente.getTelefone());
-            Cliente novoCliente = clienteRepository.save(cliente);
-            return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
-        } catch(IllegalArgumentException e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());           
-        
-        }
+        Cliente cliente = new Cliente();
+        cliente.setNome(clienteDTO.getNomeCliente());
+        cliente.setEmail(clienteDTO.getEmailCliente());
+        cliente.setTelefone(clienteDTO.getTelefoneCliente());
+
+        Cliente novoCliente = clienteRepository.save(cliente);
+        return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
