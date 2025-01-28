@@ -11,11 +11,13 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    private Double valorTotal;
     private Long clienteId;
 
-    public Pedido(Long clienteId, String descricao) {
+    public Pedido(Long clienteId, String descricao, Double valorTotal) {
         this.clienteId = clienteId;
         this.descricao = descricao;
+        this.valorTotal = valorTotal;
     }
 
     public Long getId() {
@@ -32,6 +34,10 @@ public class Pedido {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
     }
 
     public Long getClienteId() {
