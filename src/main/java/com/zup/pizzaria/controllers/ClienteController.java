@@ -26,16 +26,31 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<?> criarCliente(@Validated @RequestBody ClienteDTO clienteDTO) {
+        try {
 
-        Cliente cliente = new Cliente();
-        cliente.setNome(clienteDTO.getNomeCliente());
-        cliente.setEmail(clienteDTO.getEmailCliente());
-        cliente.setTelefone(clienteDTO.getTelefoneCliente());
+            ClienteUtil.validarCliente(clienteDTO);
 
-        Cliente novoCliente = clienteRepository.save(cliente);
-        return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
+            if (clienteRepository.existsByEmail(clienteDTO.getEmailCliente())) {
+                throw new IllegalArgumentException("O e-mail já está cadastrado.");
+            }
+
+            // Criação do objeto Cliente com os dados do DTO
+            Cliente cliente = new Cliente();
+            cliente.setNome(clienteDTO.getNomeCliente());
+            cliente.setEmail(clienteDTO.getEmailCliente());
+            cliente.setTelefone(clienteDTO.getTelefoneCliente());
+
+            Cliente novoCliente = clienteRepository.save(cliente);
+
+            return new ResponseEntity<>(novoCliente, HttpStatus.CREATED);
+
+        } catch (IllegalArgumentException e) {
+
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
+    // Tratamento de exceções de validação
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {

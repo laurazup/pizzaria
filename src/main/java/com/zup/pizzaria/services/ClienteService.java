@@ -13,19 +13,23 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-
     public Cliente criarCliente(ClienteDTO clienteDTO) throws Exception {
-
-        ClienteUtil.clienteUtil(clienteDTO.getNomeCliente(), clienteDTO.getEmailCliente(), clienteDTO.getTelefoneCliente());
-
-        if (clienteRepository.existsByEmail(clienteDTO.getEmailCliente())) {
-            throw new IllegalArgumentException("O e-mail já está cadastrado.");
-        }
+        // Criação do objeto Cliente com os dados do DTO
         Cliente cliente = new Cliente();
         cliente.setNome(clienteDTO.getNomeCliente());
-        cliente.setTelefone(cliente.getTelefone());
-        cliente.setEmail(cliente.getEmail());
+        cliente.setTelefone(clienteDTO.getTelefoneCliente());
+        cliente.setEmail(clienteDTO.getEmailCliente());
+
+
+        ClienteUtil.validarCliente(clienteDTO);
+
+
+        if (clienteRepository.existsByEmail(cliente.getEmail())) {
+            throw new IllegalArgumentException("O e-mail já está cadastrado.");
+        }
+
+        // Salva o cliente no repositório
         return clienteRepository.save(cliente);
     }
-
 }
+
